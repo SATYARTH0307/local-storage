@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 50px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Local Storage Example</h1>
+        <label for="dataInput">Enter some data:</label>
+        <input type="text" id="dataInput" placeholder="Type something...">
+        <button onclick="saveData()">Save to Local Storage</button>
+        <button onclick="loadData()">Load from Local Storage</button>
+        <button onclick="clearData()">Clear Local Storage</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        function saveData() {
+            const data = document.getElementById('dataInput').value;
+            localStorage.setItem('myData', data);
+            document.getElementById('output').textContent = 'Data saved to local storage.';
+        }
+
+        function loadData() {
+            const data = localStorage.getItem('myData');
+            if (data) {
+                document.getElementById('output').textContent = `Data from local storage: ${data}`;
+            } else {
+                document.getElementById('output').textContent = 'No data in local storage.';
+            }
+        }
+
+        function clearData() {
+            localStorage.removeItem('myData');
+            document.getElementById('output').textContent = 'Local storage cleared.';
+        }
+    </script>
+</body>
+</html>
